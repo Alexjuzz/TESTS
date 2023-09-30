@@ -1,11 +1,12 @@
 package org.example;
 import static org.assertj.core.api.Assertions.*;
 public class Main {
-    public static void main(String[] args) {
-        Calc c = new Calc();
+    public static void main(String[] args)
+    {
 //        testMaxValue();
 //        testDiscountValue();
-          testDiscountValueLess0();
+//          testDiscountValueLess0();
+        System.out.println(100-(100*101/100));
     }
 
     /***
@@ -17,7 +18,7 @@ public class Main {
     }
     public static void  testDiscountValue(){
         Calc c = new Calc();
-        assertThat(c.calculateDiscount(100,101)).isEqualTo(0);
+        assertThat(c.calculateDiscount(100,101)).isEqualTo(-1);
     }
     public static void testDiscountValueLess0(){
         Calc c = new Calc();
