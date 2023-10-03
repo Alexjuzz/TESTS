@@ -1,4 +1,8 @@
 package org.example;
+
+import org.example.User.User;
+import org.example.User.UserRepository;
+
 /*
 Условия к ДЗ (архив)
 *Задание 1.
@@ -20,6 +24,16 @@ package org.example;
  */
 public class Main {
     public static void main(String[] args) {
+        UserRepository userRepository = new UserRepository();
+        User user1 = new User("1231", "User1");
+        User user2 = new User("123", "User2");
+        User user3 = new User("123", "User3");
+        User admin = new User("admin", "admin");
+        userRepository.addUserToRepo(user1);
+        userRepository.addUserToRepo(user2);
+        userRepository.addUserToRepo(user3);
+        userRepository.addUserToRepo(admin);
+
 
     }
 }
