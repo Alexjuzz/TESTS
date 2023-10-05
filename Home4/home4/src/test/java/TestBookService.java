@@ -50,12 +50,17 @@ public class TestBookService {
     void testGetBookBySqlRequest(){
         BookService bookService1 = mock(BookService.class);
         when(bookService1.getBookBySqlRequest(anyString())).thenReturn("testBook testBook id =123").thenReturn("1st").thenReturn(null);
+        String expected1stResult = "1st";
+        String expectedNullResult = null;
+        String expectedResult = "testBook testBook id =123";
+
         String result = bookService1.getBookBySqlRequest("SELECT BOOK FROM BOOKS WHERE ID = 1");
         String someStringResult = bookService1.getBookBySqlRequest("some String");
         String nullString = bookService1.getBookBySqlRequest("");
-        assertEquals("1st",someStringResult);
-        assertEquals(null,nullString);
-        assertEquals("testBook testBook id =123",result);
+
+        assertEquals(expected1stResult, someStringResult);
+        assertEquals(expectedNullResult, nullString);
+        assertEquals(expectedResult, result);
 
     }
 }
