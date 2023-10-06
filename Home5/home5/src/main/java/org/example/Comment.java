@@ -1,4 +1,5 @@
 package org.example;
+
 //*       Задание 1. *Представьте, что вы работаете над разработкой простого приложения для записной книжки,
 //        которое позволяет пользователям добавлять, редактировать и удалять контакты.
 //        Ваша задача - придумать как можно больше различных тестов (юнит-тесты,
@@ -17,8 +18,9 @@ public class Comment {
 
     public Comment(String node) {
         setComment(node);
-       id++;
+        id++;
     }
+
     public int getId() {
         return id;
     }
@@ -26,6 +28,7 @@ public class Comment {
     public String getComment() {
         return Node;
     }
+
     public void setComment(String node) {
         Node = node;
     }
