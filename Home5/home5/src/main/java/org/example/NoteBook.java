@@ -1,10 +1,9 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import java.util.*;
-
 public class NoteBook {
     private final String nameNote;
     private final Map<Integer, User> userMap;
@@ -23,15 +22,28 @@ public class NoteBook {
         return userMap;
     }
 
-    public void addUser(String nameUser, String secondNameUser, String textComment, int phoneNumber) {
+    public void addContact(String nameUser, String secondNameUser, String textComment, int phoneNumber) {
         User user = new User(nameUser, secondNameUser, new Comment(textComment), phoneNumber);
         userMap.put(currentUserId, user);
         currentUserId++; // Увеличиваем текущий идентификатор для следующего пользователя
     }
 
+    public List<User> findUsersByName(String nameToFind) {
+        List<User> usersFound = new ArrayList<>();
+
+        for (User user : userMap.values()) {
+            if (user.getFirstName().equals(nameToFind)) {
+                usersFound.add(user);
+            }
+        }
+
+        return usersFound;
+    }
+    public User findUserById(int userId) {
+        return userMap.get(userId);
+    }
+
     public void removeUser(int userId) {
         userMap.remove(userId);
     }
-
-    // Другие методы для работы с пользователями
 }
