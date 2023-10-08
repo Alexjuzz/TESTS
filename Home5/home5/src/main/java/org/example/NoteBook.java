@@ -3,27 +3,35 @@ package org.example;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.*;
+
 public class NoteBook {
-    private static int id = 0;
-    private String nameNote;
+    private final String nameNote;
     private final Map<Integer, User> userMap;
+    private int currentUserId = 1;
 
-    public Map<Integer, User> getUserMap() {
-        return userMap;
-    }
-
-    public NoteBook(String textComment, String nameNote, String nameUser, String secondNameUser, int phoneNumber) {
+    public NoteBook(String nameNote) {
         this.nameNote = nameNote;
-        id++;
-        userMap = new HashMap<>();
-        userMap.put(id, new User(nameUser, secondNameUser, new Comment(textComment), phoneNumber));
+        this.userMap = new HashMap<>();
     }
 
     public String getNameNote() {
         return nameNote;
     }
 
-    public void setNameNote(String nameNote) {
-        this.nameNote = nameNote;
+    public Map<Integer, User> getUserMap() {
+        return userMap;
     }
+
+    public void addUser(String nameUser, String secondNameUser, String textComment, int phoneNumber) {
+        User user = new User(nameUser, secondNameUser, new Comment(textComment), phoneNumber);
+        userMap.put(currentUserId, user);
+        currentUserId++; // Увеличиваем текущий идентификатор для следующего пользователя
+    }
+
+    public void removeUser(int userId) {
+        userMap.remove(userId);
+    }
+
+    // Другие методы для работы с пользователями
 }
